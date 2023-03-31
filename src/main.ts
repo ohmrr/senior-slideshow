@@ -11,11 +11,11 @@ function updateCarousel(studentOne: Student, studentTwo: Student) {
   document.querySelector<HTMLDivElement>("#carousel")!.innerHTML = `
   <div class="img-container">
     <h1 class="absolute heading">${studentOne.name}</h1>
-    <img src="${studentOne.file}" alt="" class="h-full w-[50vw] slide" />
+    <img src="${studentOne.file}" alt="" class="h-full w-full object-cover col-span-1 max-h-screen slide" />
   </div>
   <div class="img-container">
     <h1 class="absolute heading">${studentTwo.name}</h1>
-    <img src="${studentTwo.file}" alt="" class="h-[100vh] w-[50vw] slide" />
+    <img src="${studentTwo.file}" alt="" class="h-full w-full object-cover col-span-1 max-h-screen slide" />
   </div>
   `;
 }

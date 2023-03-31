@@ -8,6 +8,7 @@
 html,
 body {
   @apply bg-gray-900 p-0 m-0;
+  height: 100%;
 }
 
 .img-container {
