@@ -7,18 +7,30 @@ body {
   @apply bg-gray-900 p-0 m-0;
 }
 
+.img-container {
+  @apply relative flex align-top justify-center fade-in-out;
+}
+
+.heading {
+  @apply text-5xl text-white font-bold m-5;
+}
+
+.slide {
+  @apply rounded-sm shadow-2xl shadow-blue-500/30;
+}
+
 .fade-in-out {
   animation: fadeInOut 7s linear 1 forwards;
 }
 
 @keyframes fadeInOut {
   0% {
-    opacity: 0;
+    opacity: 0.05;
   }
   50% {
     opacity: 1;
   }
   100% {
-    opacity: 0;
+    opacity: 0.05;
   }
 }
