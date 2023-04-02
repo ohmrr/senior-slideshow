@@ -8,19 +8,22 @@
 html,
 body {
   @apply bg-gray-900 p-0 m-0;
-  height: 100%;
 }
 
 .img-container {
-  @apply relative flex align-top justify-center fade-in-out;
+  @apply relative flex align-top justify-center fade-in-out text-center;
 }
 
-.heading {
-  @apply text-5xl text-white font-bold m-5;
+.student-name {
+  @apply text-5xl text-white font-bold m-4 leading-none tracking-tight;
+}
+
+.student-college {
+  @apply text-5xl text-black font-semibold leading-none tracking-tight;
 }
 
 .slide {
-  @apply rounded-sm shadow-2xl shadow-blue-500/30;
+  @apply rounded-sm shadow-2xl shadow-blue-500/30 col-span-1;
 }
 
 .fade-in-out {
