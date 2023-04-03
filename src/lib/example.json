@@ -1,0 +1,12 @@
+[
+  {
+    "file": "COLOR1/00000001.jpg",
+    "name": "John Doe",
+    "college": "UC Berkeley"
+  },
+  {
+    "file": "COLOR1/00000002.jpg",
+    "name": "Jane Doe",
+    "college": "" // if left empty, will default to "undecided"
+  }
+]
