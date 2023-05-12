@@ -35,7 +35,7 @@ function updateCarousel(studentOne: Student, studentTwo: Student) {
   `;
 }
 
-const MAX_IMAGES = data.length;
+const MAX_IMAGES = data.length - 1;
 
 function safeIncrement(index: number): number {
   return index + 1 > MAX_IMAGES ? 0 : index + 1;
@@ -64,5 +64,5 @@ document.addEventListener('DOMContentLoaded', () => {
     currentIndex = safeIncrement(safeIncrement(currentIndex));
 
     updateCarousel(studentOne, studentTwo);
-  }, 200);
+  }, 7000);
 });
