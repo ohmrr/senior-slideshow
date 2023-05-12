@@ -7,6 +7,6 @@
   {
     "file": "COLOR1/00000002.jpg",
     "name": "Jane Doe",
-    "college": "" // if left empty, will default to "undecided"
+    "college": ""
   }
 ]

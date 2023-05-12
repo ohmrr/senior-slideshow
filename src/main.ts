@@ -5,6 +5,7 @@ interface Student {
   file: string;
   name: string;
   college: string;
+  index: number;
 }
 
 function updateCarousel(studentOne: Student, studentTwo: Student) {
@@ -14,8 +15,10 @@ function updateCarousel(studentOne: Student, studentTwo: Student) {
     <img src="${
       studentOne.file
     }" alt="" class="h-full w-full object-cover max-h-screen slide" />
-    <div class="bg-white absolute bottom-0 p-4 w-full">
-      <h1 class="student-college">${studentOne.college ? studentOne.college : 'Undecided'}</h1>
+    <div class="bg-black absolute bottom-0 p-4 w-full">
+      <h1 class="student-college">${
+        studentOne.college ? studentOne.college : 'Undecided'
+      }</h1>
     </div>
   </div>
   <div class="img-container">
@@ -23,34 +26,43 @@ function updateCarousel(studentOne: Student, studentTwo: Student) {
     <img src="${
       studentTwo.file
     }" alt="" class="h-full w-full object-cover max-h-screen slide" />
-    <div class="bg-white absolute bottom-0 p-4 w-full">
-      <h1 class="student-college">${studentTwo.college ? studentTwo.college : 'Undecided'}</h1>
+    <div class="bg-black absolute bottom-0 p-4 w-full">
+      <h1 class="student-college">${
+        studentTwo.college ? studentTwo.college : 'Undecided'
+      }</h1>
     </div>
   </div>
   `;
+}
+
+const MAX_IMAGES = data.length;
+
+function safeIncrement(index: number): number {
+  return index + 1 > MAX_IMAGES ? 0 : index + 1;
 }
 
 let currentIndex = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
   setInterval(async () => {
-    const nextIndex = (currentIndex + 1) % data.length;
+    const nextIndex = safeIncrement(currentIndex);
 
     const studentOne: Student = {
       file: new URL(`./assets/images/${data[currentIndex].file}`, import.meta.url).href,
       name: data[currentIndex].name,
       college: data[currentIndex].college,
+      index: currentIndex,
     };
 
     const studentTwo: Student = {
       file: new URL(`./assets/images/${data[nextIndex].file}`, import.meta.url).href,
       name: data[nextIndex].name,
       college: data[nextIndex].college,
+      index: nextIndex,
     };
 
-    currentIndex = (currentIndex + 2) % data.length;
-    if (currentIndex === data.length - 1 && data.length % 2 === 1) currentIndex = 0;
+    currentIndex = safeIncrement(safeIncrement(currentIndex));
 
     updateCarousel(studentOne, studentTwo);
-  }, 7000);
+  }, 200);
 });
