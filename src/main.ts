@@ -1,11 +1,17 @@
 import './style.css';
 import data from './lib/data.json';
 
+let studentList: Student[] = [];
+for (let i = 0; i < data.length; i++) {
+  if (data[i].college != '') {
+    studentList.push(data[i]);
+  }
+}
+
 interface Student {
   file: string;
   name: string;
   college: string;
-  index: number;
 }
 
 function updateCarousel(studentOne: Student, studentTwo: Student) {
@@ -35,7 +41,7 @@ function updateCarousel(studentOne: Student, studentTwo: Student) {
   `;
 }
 
-const MAX_IMAGES = data.length - 1;
+const MAX_IMAGES = studentList.length - 1;
 
 function safeIncrement(index: number): number {
   return index + 1 > MAX_IMAGES ? 0 : index + 1;
@@ -48,17 +54,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextIndex = safeIncrement(currentIndex);
 
     const studentOne: Student = {
-      file: new URL(`./assets/images/${data[currentIndex].file}`, import.meta.url).href,
-      name: data[currentIndex].name,
-      college: data[currentIndex].college,
-      index: currentIndex,
+      file: new URL(`./assets/images/${studentList[currentIndex].file}`, import.meta.url).href,
+      name: studentList[currentIndex].name,
+      college: studentList[currentIndex].college,
     };
 
     const studentTwo: Student = {
-      file: new URL(`./assets/images/${data[nextIndex].file}`, import.meta.url).href,
-      name: data[nextIndex].name,
-      college: data[nextIndex].college,
-      index: nextIndex,
+      file: new URL(`./assets/images/${studentList[nextIndex].file}`, import.meta.url).href,
+      name: studentList[nextIndex].name,
+      college: studentList[nextIndex].college,
     };
 
     currentIndex = safeIncrement(safeIncrement(currentIndex));
